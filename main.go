@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"rely/dao"
 	"rely/model"
+	"rely/routers"
 )
 
 func main() {
@@ -12,6 +12,9 @@ func main() {
 	}
 	defer dao.Close()
 	// 创建数据库表
-	model.AutoMigrateDB()
-	fmt.Println("结束")
+	model.InitModel()
+	// 导入路由
+	r := routers.SetupRouter()
+	// 启动项目
+	r.Run(":8989")
 }

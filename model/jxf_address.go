@@ -6,7 +6,7 @@ import "github.com/jinzhu/gorm"
  * 收货地址
  */
 type JxfAdder struct {
-	ID uint 			`gorm:"primary_key"`  // 主键
+	//ID uint 			`gorm:"primary_key"`  // 主键
 	UserId string		`gorm:"not null;"` // 用户 id
 	ProvinceId string   `gorm:"not null;"` // 省
 	CityId string 		`gorm:"not null;"` // 城市

@@ -7,7 +7,7 @@ import (
 /**
  * 建立 更新数据表
  */
-func AutoMigrateDB()  {
+func InitModel()  {
 	dao.DB.AutoMigrate(
 		&JxfUser{},
 		&JxfAdder{},
