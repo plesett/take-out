@@ -17,11 +17,9 @@ func CreateUser(c *gin.Context)  {
 	mobile := c.PostForm("mobile")
 
 	// 判断是否存在用户名
-	if username == "" {
+	if username == "" && mobile == "" {
 		c.JSON(http.StatusOK, gin.H{
-			"code": "-1",
-			"msg": "信息请填写完整",
-			"status": false,
+			"data": tool.ErrorReturnForMat(tool.ErrorMessageDefect, nil),
 		})
 		return
 	}
@@ -29,9 +27,7 @@ func CreateUser(c *gin.Context)  {
 	// 判断手机号是否合法
 	if !tool.IsMobile(mobile) {
 		c.JSON(http.StatusOK, gin.H{
-			"code": "-1",
-			"msg": "手机号码异常",
-			"status": false,
+			"data": tool.ErrorReturnForMat(tool.ErrorMobile, nil),
 		})
 		return
 	}
@@ -50,6 +46,6 @@ func CreateUser(c *gin.Context)  {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"msg": "success",
+		"msg": tool.SuccessSubmit,
 	})
 }
